@@ -1,0 +1,168 @@
+.pay-method {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.value {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.value input{
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btns {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.saldo {
+    display: flex;
+    flex-direction: column;
+}
+
+.saldo div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.total {
+    color: red;
+    font-weight: bold;
+}
+
+/* Estilos adicionales para los inputs condicionales */
+.conditional-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.conditional-inputs label {
+    font-weight: bold;
+}
+
+.conditional-inputs input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+select {
+    height: 4vh;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+select:focus {
+    border-color: #007ad9; /* Cambia este color al color del borde de los inputs de PrimeNG */
+    outline: none; /* Elimina el borde de enfoque predeterminado */
+    box-shadow: 0 0 0 0.2rem rgba(0, 122, 217, 0.25); /* Añade un efecto de sombra similar a PrimeNG */
+}
+.combined-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 150px;
+  }
+  
+  .pending {
+    flex: 1;
+  }
+
+  .pending label {
+    font-weight: bold;
+  }
+
+  .pending span {
+    font-weight: normal;
+  }
+  
+  .payments {
+    flex: 1;
+  }
+  
+  .payments .title {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  table {
+    width: 100%;
+  }
+
+  .items-table-container {
+    max-height: calc(6 * 30px); /* Altura máxima para 6 items, ajusta 48px según la altura de cada fila */
+    overflow-y: auto; /* Habilitar scroll vertical */
+    margin-top: 16px;
+    display: block;
+  }
+  
+  .items-table {
+    display: block;
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      display: table;
+      margin-bottom: 20px; /* Separación entre tablas */
+  
+      th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: right; /* Alineación horizontal */
+        vertical-align: middle; /* Alineación vertical */
+        display: table-cell;
+      }
+  
+      th {
+        background-color: blue;
+        color: white;
+        font-weight: bold;
+        text-align: center; /* Alineación horizontal */
+        vertical-align: middle; /* Alineación vertical */
+        display: table-cell;
+      }
+  
+      thead {
+        display: table-header-group;
+      }
+  
+      tbody {
+        display: table-row-group;
+      }
+  
+      tbody tr {
+        display: table-row;
+      }
+  
+      tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+  
+      tbody tr:hover {
+        background-color: #f1f1f1;
+      }
+    }
+  }
+
+

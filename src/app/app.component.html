@@ -1,0 +1,11 @@
+<p-toast></p-toast>
+
+@if (navigation$ | async) {
+  <div [@loaderAnimation]="showLoader() ? 'visible' : 'hidden' ">
+  <router-outlet></router-outlet>
+</div>
+}
+
+@if (showLoader()) {
+  <app-loader></app-loader>
+}
