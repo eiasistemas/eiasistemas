@@ -1,0 +1,307 @@
+<div class="main-container">
+  <div class="sidebar">
+    <!-- Contenido del menú -->
+    <p-button class="btn" icon="pi pi-inbox" title="Avisos de Cobro" (click)="showCollectionNotices()" [disabled]="!isCxcLoaded"></p-button>
+    <!-- <p-button class="btn" icon="pi pi-money-bill" title="Nota de Credito" (click)="showCreditNote()"></p-button> -->
+    <p-button class="btn" icon="pi pi-user-minus" title="Suspender Servicio" (click)="showSuspendServiceUser()"></p-button>
+    <p-button class="btn2" icon="pi pi-times" title="Suspender Servicio" (click)="clearAll()"></p-button>
+    <p-button class="pagar" label="Pagar" (click)="showPaymentModal()" [disabled]="!isFormValid()"></p-button>
+  </div>
+  <div class="content">
+    <div class="navbar">
+      <div class="logo">
+        <img src="../../../../../assets/img/logoImage.jpg" alt="logo" />
+        <h1>Up Link de Venezuela</h1>
+      </div>
+
+      <div class="user" (click)="op.toggle($event)">
+        <span>Admin</span>
+        <img src="../../../../../assets/img/avatar2.png" alt="user" />
+        <p-overlayPanel #op>
+          <div>
+            <p-button class="logOut" (click)="logout()">Cerrar Sesión</p-button>
+          </div>
+        </p-overlayPanel>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="form">
+        <div class="mid">
+          <form action="">
+            <div class="table-bg">
+              <table class="table">
+                <tr>
+                  <th>
+                    <label>Base imponible: </label>
+                  </th>
+                  <td>
+                    <span>Bs: {{ subtotalBs.toFixed(2) }}</span>
+                    <span>$: {{ subtotalUsd.toFixed(2) }}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <label>Descuento: </label>
+                  </th>
+                  <td>
+                    <span>Bs: {{ discount.toFixed(2) }}</span>
+                    <span>$: {{ (discount / usdPrice).toFixed(2) }}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <label>IVA 16%: </label>
+                  </th>
+                  <td>
+                    <span>Bs: {{ iva.toFixed(2) }}</span>
+                    <span>$: {{ (iva / usdPrice).toFixed(2) }}</span>
+                  </td>
+                </tr>
+                <tr class="total">
+                  <th>
+                    <label>Total: </label>
+                  </th>
+                  <td>
+                    <span>Bs: {{ totalBs.toFixed(2) }}</span>
+                    <span>$: {{ totalUsd.toFixed(2) }}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <label>IGTF 3%: </label>
+                  </th>
+                  <td>
+                    <span>Bs: {{ igtf.toFixed(2) }}</span>
+                    <span>$: {{ igtf.toFixed(2) }}</span>
+                  </td>
+                </tr>
+                <tr class="total-row">
+                  <th>
+                    <label>Total a pagar: </label>
+                  </th>
+                  <td>
+                    <span>Bs: {{ totalBs.toFixed(2) }}</span>
+                    <span>$: {{ totalUsd.toFixed(2) }}</span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="user-panel">
+        <div class="discount">
+          <div class="top">
+            <div class="left">
+              <label>Factura: <span class="tittles">{{ prFactValueInt }}</span></label>
+              <label>Tasa: <span class="tittle">{{ usdPrice | number:'1.2-2' }}</span></label>
+            </div>
+            <div class="right">
+              <label>Fecha: <span class="tittle">{{ currentDate }}</span></label>
+              <label>Vencimiento: <span class="tittle">{{ dueDate }}</span></label>
+            </div>
+          </div>
+        </div>
+
+        <form [formGroup]="customersForm">
+          <div class="client-data">
+            <label class="title">Datos del Cliente</label>
+            <p-autoComplete 
+              class="p-autocomplete p-component p-inputwrapper"
+              id="cedula" 
+              placeholder="Cedula"
+              formControlName="cedula" 
+              [suggestions]="filteredCustomers" 
+              (completeMethod)="filterCustomers($event)" 
+              (input)="toUpperCase($event)"
+              (onSelect)="selectCustomer($event)" 
+              [field]="'id3'">
+              <ng-template let-customer pTemplate="item">
+                <div>{{ customer.id3 }} - {{ customer.descrip }}</div>
+              </ng-template>
+            </p-autoComplete>
+            <input type="text" pInputText placeholder="Cliente" formControlName="cliente"/>
+            <input type="text" pInputText placeholder="Direccion" formControlName="direccion"/>
+            <input type="text" pInputText placeholder="Teléfono" formControlName="telefono"/>
+            <input type="text" pInputText placeholder="Email" formControlName="email"/>
+            <input type="text" pInputText placeholder="Dirección del servicio" formControlName="direccionServicio"/>
+
+        
+            <div class="down">
+              <input type="text" pInputText placeholder="Descuento" name="descuento" formControlName="descuento" />
+              <i class="pi pi-percentage"></i>
+              <div class="total-items">
+                <label>Total de items: <span class="items">{{ totalItems }}</span></label>
+              </div>
+              <!-- <div class="btns">
+                <div class="options">
+                  <p-button class="btn" icon="pi pi-inbox" title="Avisos de Cobro" (click)="showCollectionNotices()"></p-button>
+                  <p-button class="btn" icon="pi pi-money-bill" title="Nota de Credito" (click)="showCreditNote()"></p-button>
+                  <p-button class="btn" icon="pi pi-user-minus" title="Suspender Servicio" (click)="showSuspendServiceUser()"></p-button>
+                  <p-button class="btn2" icon="pi pi-times" title="Suspender Servicio" (click)="clearAll()"></p-button>
+                  <p-button class="pagar" label="Pagar" (click)="showPaymentModal()" [disabled]="!isFormValid()"></p-button>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer">
+      <form [formGroup]="invoiceForm">
+        <div class="input-row">
+          <div class="input-group">
+            <p-floatLabel>
+              <p-autoComplete 
+                class="p-autocomplete p-component p-inputwrapper"
+                id="codigo" 
+                formControlName="codigo" 
+                [suggestions]="filteredServices" 
+                (completeMethod)="filterServices($event)" 
+                (onSelect)="selectService($event)" 
+                [field]="'codserv'">
+                <ng-template let-service pTemplate="item">
+                  <div>{{ service.codserv }} - {{ service.descrip }}</div>
+                </ng-template>
+              </p-autoComplete>
+              <label>Código</label>
+            </p-floatLabel>
+          </div>
+          
+          <div class="input-group">
+            <p-floatLabel>
+              <p-autoComplete 
+                class="p-autocomplete p-component p-inputwrapper"
+                id="descripcion" 
+                formControlName="descripcion" 
+                [suggestions]="filteredServices" 
+                (completeMethod)="filterServices($event)" 
+                (onSelect)="selectService($event)" 
+                [field]="'descrip'">
+                <ng-template let-service pTemplate="item">
+                  <div>{{ service.descrip }}</div>
+                </ng-template>
+              </p-autoComplete>
+              <label>Descripción</label>
+            </p-floatLabel>
+          </div>
+
+          <div class="input-group">
+            <p-floatLabel>
+              <input 
+                pInputText 
+                id="cantidad" 
+                formControlName="cantidad">
+              <label for="cantidad">Cantidad</label>
+            </p-floatLabel>
+          </div>
+
+          <div class="input-group">
+            <p-floatLabel>
+              <input 
+                pInputText 
+                id="precio" 
+                formControlName="precio">
+              <label for="precio">Precio</label>
+            </p-floatLabel>
+          </div>
+
+          <div class="input-group">
+            <p-floatLabel>
+              <input 
+                pInputText 
+                id="descuento" 
+                formControlName="descuento">
+              <label for="descuento">Descuento</label>
+            </p-floatLabel>
+          </div>
+
+          <div class="input-group">
+            <p-floatLabel>
+              <input 
+                pInputText 
+                id="impuesto" 
+                formControlName="impuesto">
+              <label for="impuesto">Impuesto</label>
+            </p-floatLabel>
+          </div>
+
+          <div class="input-group">
+            <p-floatLabel>
+              <input 
+                pInputText 
+                id="total-item" 
+                formControlName="totalItem">
+              <label for="total-item">Total Item</label>
+            </p-floatLabel>
+          </div>
+
+          <div class="icons">
+            <i class="pi pi-plus blue-icon" (click)="addItem()"></i>
+            <i class="pi pi-eraser red-icon" (click)="resetForm()"></i>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Tabla para mostrar los items guardados -->
+    <div class="items-table-container">
+      <div class="items-table">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Código</th>
+              <th>Descripción</th>
+              <th>Cantidad</th>
+              <th>Precio</th>
+              <th>Descuento</th>
+              <th>Impuesto</th>
+              <th>Total Item</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Mostrar elementos cargados desde localStorage -->
+            <tr *ngFor="let item of itemFactItems; let i = index">
+              <th>{{ i + 1 + cxcItems.length }}</th>
+              <td class="code">{{ item.coditem }}</td>
+              <td class="descrip">{{ item.descrip1 }}</td>
+              <td>{{ item.cantidad }}</td>
+              <td>{{ item.precio }}</td>
+              <td>{{ item.descuento }}</td>
+              <td>{{ item.impuesto }}</td>
+              <td>{{ item.totalitem }}</td>
+              <td>
+                <i class="pi pi-trash red-icon" (click)="removeItem(i, 'itemFact')"></i>
+              </td>
+            </tr>
+            <!-- Mostrar elementos ingresados manualmente -->
+            <tr *ngFor="let item of items; let i = index">
+              <th>{{ i + 1 + cxcItems.length }}</th>
+              <td class="code">{{ item.codigo }}</td>
+              <td class="descrip">{{ item.descripcion }}</td>
+              <td>{{ item.cantidad }}</td>
+              <td>{{ item.precio }}</td>
+              <td>{{ item.descuento }}</td>
+              <td>{{ item.impuesto }}</td>
+              <td>{{ item.totalItem }}</td>
+              <td>
+                <i class="pi pi-trash red-icon" (click)="removeItem(i, 'manual')"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <p>Versión {{ version }}</p>
+      </div>
+    </footer>
+  </div>
+</div>

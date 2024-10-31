@@ -1,0 +1,8 @@
+{
+    "/api": {
+        "target": "https://demoemision.thefactoryhka.com.ve",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    }
+}

@@ -1,0 +1,67 @@
+body{
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F3F4F6;
+  }
+
+  .container {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  
+  #btn {
+    background-color: #1323C6 !important;
+  }
+  
+  input {
+    background-color: #E5E7EB;
+  }
+  
+  img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .card{
+    width: 500px !important;
+  }
+  
+  .error-message {
+    min-height: 20px; /* Ajusta esta altura según sea necesario */
+    width: 10%;
+  }
+
+  .password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .password-container input {
+    width: 100%;
+    padding-right: 40px; /* Espacio para el botón */
+  }
+  
+  .password-container button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-weight: bold;
+}

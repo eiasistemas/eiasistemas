@@ -1,0 +1,80 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.inicial-date{
+    display: flex;
+    flex-direction: column;
+}
+
+.final-date{
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos del botón de PrimeNG */
+.p-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    height: 2.5em;
+    padding: 0 1em;
+    font-size: 1rem;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    background-color: var(--primary-color, #007ad9);
+    color: #ffffff;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+    width: 20%;
+  }
+  
+  .p-button:hover {
+    background-color: var(--primary-color-hover, #005bb5);
+  }
+  
+  .p-button:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  .p-button-label {
+    display: inline-block;
+    line-height: 1;
+  }
+  
+  .p-component {
+    box-sizing: border-box;
+  }
+
+    /* Estilos del input de PrimeNG */
+.custom-input {
+    display: block;
+    width: 100%;
+    padding: 0.5em;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 3px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  .custom-input:focus {
+    border-color: #007ad9; /* Cambia este color al color del borde de los inputs de PrimeNG */
+    outline: none; /* Elimina el borde de enfoque predeterminado */
+    box-shadow: 0 0 0 0.2rem rgba(0, 122, 217, 0.25); /* Añade un efecto de sombra similar a PrimeNG */
+  }
+  
+  .custom-input::placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }

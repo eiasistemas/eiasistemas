@@ -1,0 +1,78 @@
+<div class="container">
+    
+    <div class="saldo">
+        <label class="title">Saldo Pendiente:</label>
+        <div>
+            <label class="total">Bs. {{ totalBs | number:'1.2-2' }} / ${{ totalUsd | number:'1.2-2'}}</label>
+            <!-- <label class="title">Vuelto: <span>0</span></label> -->
+        </div>
+    </div>
+
+    <div class="pay-method">
+        <label for="paymentMethod" class="title">Tipo de pago:</label>
+        <select id="paymentMethod" [(ngModel)]="selectedOption" (ngModelChange)="updateDropdownOptions($event)" (onChange)="onDropdownChange($event)">
+            <option value="">Seleccionar forma de pago:</option>
+            <!-- <option value="bancoPanama">Banco Panama</option> -->
+            <option value="USD">Divisa</option>
+            <option value="-EFE-">Efectivo</option>
+            <option value="0134">Banesco</option>
+            <option value="0134M">Banco de Venezuela Pago Movil</option>
+            <option value="0134P">Banesco POS</option>
+        </select>
+    </div>
+
+    <div class="value">
+        <label for="amount" class="title">Monto: </label>
+        <input id="amount" type="number" pInputText [(ngModel)]="formattedTotalBs"/>
+
+        
+    <div *ngIf="selectedOption === '0134M'" class="conditional-inputs">
+        <label for="idNumber">Cédula:</label>
+        <input id="idNumber" type="text" pInputText [(ngModel)]="idNumber" required>
+        
+        <label for="phoneNumber">Teléfono:</label>
+        <input id="phoneNumber" type="text" pInputText [(ngModel)]="phoneNumber" required>
+
+        <label for="email">Correo:</label>
+        <input id="email" type="text" pInputText [(ngModel)]="email" required>
+    </div>
+
+    <div *ngIf="selectedOption === '0134P'" class="conditional-inputs">
+        <label for="batchNumber">Número de Lote:</label>
+        <input id="batchNumber" type="text" pInputText [(ngModel)]="batchNumber" required>
+    </div>
+
+        <div class="btns">
+            <button pButton type="button" label="Agregar Pago" class="p-button-primary" (click)="addPayment()" [disabled]="!selectedOption" [disabled]="!isFormValid()"></button>
+            <button pButton type="button" label="Procesar Factura" class="p-button-success" (click)="submitForm()"  [disabled]="getRemainingBalance() !== 0"></button>
+            <button pButton type="button" label="Limpiar" class="p-button-danger" (click)="clearForm()"></button>
+        </div>
+
+        <div class="combined-container">
+
+          <label class="title">Pagos Realizados:</label>
+         
+            <div class="pending">
+                <label>Saldo restante: <span>Bs. {{ getRemainingBalance() | number: '1.2-2' }}</span></label>
+              </div>
+            
+        </div>
+
+        <div class="payments items-table-container">
+          <div class="items-table">
+            <table>
+              <tbody>
+                <tr *ngFor="let payment of paymentsList; let i = index">
+                  <td>{{ payment.tipoPago }}</td>
+                  <td>Bs. {{ payment.monto | number: '1.2-2' }}</td>
+                  <td>$ {{ payment.montoDolares | number: '1.2-2' }}</td>
+                  <td>IGFT {{ payment.igtf | number: '1.2-2'}}</td>
+                  <td>
+                    <button pButton type="button" icon="pi pi-trash" class="p-button-danger" (click)="removePayment(i)"></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+</div>

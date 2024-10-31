@@ -1,0 +1,29 @@
+<div *ngIf="selectedCustomer">
+    <p><strong>Cliente:</strong> {{ selectedCustomer.descrip }}</p>
+  </div>
+  <div *ngIf="filteredData.length > 0">
+    <p><strong>Código del Cliente:</strong> {{ filteredData[0]?.codclie }}</p>
+  </div>
+  <h3>Total de notificaciones: {{ totalCxc }} </h3>
+  <div class="items-table-container">
+    <div class="items-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Documento</th>
+            <th>Fecha inicial</th>
+            <th>Fecha final</th>
+            <th>Monto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of filteredData" (click)="onRowClick(item)">
+            <td class="center">{{ item.numerod }}</td>
+            <td class="center">{{ item.fechai | date: 'yyyy-MM-dd' }}</td>
+            <td class="center">{{ item.fechae | date: 'yyyy-MM-dd' }}</td>
+            <td>Bs. {{ item.montoneto }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

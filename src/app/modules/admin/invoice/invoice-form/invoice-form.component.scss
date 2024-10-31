@@ -1,0 +1,698 @@
+html, body {
+  margin: 0  !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 5px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin-bottom: 16px;
+  position: fixed; /* Fija el navbar en la parte superior */
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white; /* Asegúrate de que el fondo sea blanco */
+  z-index: 1000; /* Asegúrate de que el navbar esté por encima de otros elementos */
+}
+
+.user{
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.logOut {
+  ::ng-deep .p-button {
+      background-color: white;
+      border-color: white;
+      height: 1vh;
+      color: black;
+      width: 100%;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: last baseline;
+  gap: 10px;
+  color: blue;
+}
+
+.logo img {
+  width: 40px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user img {
+  width: 40px;
+}
+
+.main-container {
+  display: flex;
+}
+
+.main-container .container{
+  margin-top: 11vh;
+}
+
+.sidebar {
+  width: 100px; /* Ancho del menú */
+  background-color: #f8f9fa; /* Color de fondo del menú */
+  padding: 10px; /* Espaciado interno */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espacio entre los botones */
+  margin-top: 12vh;
+}
+
+.menu-button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  width: 100%; /* Asegura que los botones ocupen el 100% del ancho del sidebar */
+}
+
+.menu-button:hover {
+  background-color: #0056b3;
+}
+
+.content {
+  flex: 1; /* Ocupa el resto del espacio disponible */
+  padding: 10px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1;
+  background-color: #f0f0f0;
+  border-radius: 15px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid #000;
+  font-size: 15px;
+  gap: 80px;
+}
+
+.right, .left {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex: 1;
+}
+
+.mid {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.table-bg {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  height: 33vh;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #333;
+  height: 31vh;
+}
+
+.table tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.table tr:nth-child(even) {
+  background-color: #e0e0e0;
+}
+
+.table th, .table td {
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.table th {
+  text-align: left;
+  width: 50%;
+}
+
+.table td {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  text-align: right;
+  gap: 50px;
+  width: 100%;
+  margin-top: 3px;
+}
+
+.table label {
+  margin-right: 8px;
+}
+
+.table span {
+  display: block;
+  margin-left: 8px;
+}
+
+.table tr.total-row {
+  font-size: 1.2em;
+  color: #e0f7fa;
+  background-color: blue;
+}
+
+.table tr.total {
+  font-size: 1.2em;
+  color: blue;
+  background-color: #e0f7fa;
+}
+
+.total-row td {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  font-weight: bold;
+}
+
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  width: 100%;
+  padding-bottom: 5px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+}
+
+.input-group label {
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  border: none !important;
+  border-bottom: 1px solid blue !important;
+  padding: 5px;
+  width: 80% !important;
+  border-radius: 0%;
+}
+
+::ng-deep .input-group .p-autocomplete.p-component.p-inputwrapper .p-autocomplete-input {
+  border: none !important;
+  border-bottom: 1px solid blue !important;
+  padding: 5px !important;
+  width: 80% !important;
+  border-radius: 0% !important;
+  box-shadow: none !important;
+}
+
+.icons {
+  display: flex;
+  gap: 3px;
+  flex-direction: row;
+}
+
+.blue-icon, .red-icon {
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blue-icon {
+  background-color: blue;
+  height: 4vh;
+}
+
+.red-icon {
+  background-color: red;
+  height: 4vh;
+}
+
+.user-panel {
+  flex: 1;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.tittles {
+  color: red !important;
+}
+
+.tittle {
+  color: #000 !important;
+  font-weight: lighter;
+}
+
+.title {
+  font-weight: bold;
+  color: blue !important;
+}
+
+.top label {
+  font-weight: bold;
+}
+
+.discount {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+.discount input {
+  width: 20% !important;
+  height: 4vh;
+}
+
+.down {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+}
+
+.down input {
+  height: 5vh;
+  width: 30%;
+}
+
+.down i {
+  margin-top: 2px;
+  line-height: 3vh;
+  height: 1vh;
+}
+
+.client-data {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+}
+
+.client-data input {
+  height: 3vh;
+}
+
+::ng-deep .client-data .p-autocomplete.p-component.p-inputwrapper .p-autocomplete-input {
+  height: 3vh;
+  width: 100% !important;
+}
+
+::ng-deep .client-data .p-autocomplete.p-component.p-inputwrapper {
+  width: 100%;
+}
+
+.custom-size {
+  ::ng-deep .p-dropdown {
+      width: 100% !important;
+      height: 4vh;
+      display: flex;
+      align-items: center;
+  }
+
+  ::ng-deep .p-dropdown-label {
+      height: 100%;
+      line-height: 4vh;
+      display: flex;
+      align-items: center;
+  }
+
+  ::ng-deep .p-dropdown-trigger {
+      height: 100%;
+      display: flex;
+      align-items: center;
+  }
+}
+
+.btns {
+  width: 100%;
+}
+
+.options {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  color: white;
+}
+
+.btn {
+  ::ng-deep .p-button {
+      background-color: black !important;
+      border-color: black !important;
+      height: 4.5vh;
+      color: white !important;
+      width: 100%;
+  }
+}
+
+.btn2 {
+  ::ng-deep .p-button {
+      background-color: red !important;
+      border-color: red !important;
+      height: 4.5vh;
+      color: white !important;
+      width: 100%;
+  }
+}
+
+.pay {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagar {
+  ::ng-deep .p-button {
+      height: 4.5vh;
+      background-color: blue !important;
+      border-color: blue !important;
+      color: white !important;
+      width: 100%;
+      text-align: center;
+  }
+}
+
+.autocomplete-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  position: absolute;
+  background-color: white;
+  z-index: 1000;
+  width: 100%;
+}
+
+.autocomplete-list li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.autocomplete-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.items-table-container {
+  max-height: calc(6 * 60px); /* Altura máxima para 6 items, ajusta 48px según la altura de cada fila */
+  overflow-y: auto; /* Habilitar scroll vertical */
+  margin-top: 16px;
+  display: block;
+}
+
+.items-table {
+  display: block;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    display: table;
+    margin-bottom: 20px; /* Separación entre tablas */
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: right; /* Alineación horizontal */
+      vertical-align: middle; /* Alineación vertical */
+      display: table-cell;
+    }
+
+    th {
+      background-color: blue;
+      color: white;
+      font-weight: bold;
+      text-align: center; /* Alineación horizontal */
+      vertical-align: middle; /* Alineación vertical */
+      display: table-cell;
+    }
+
+    thead {
+      display: table-header-group;
+    }
+
+    tbody {
+      display: table-row-group;
+    }
+
+    tbody tr {
+      display: table-row;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+  }
+}
+
+.code {
+  text-align: left !important;
+}
+
+.descrip {
+  text-align: left !important;
+}
+
+.total-items {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.items {
+  font-weight: lighter;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center; /* Centrar el contenido horizontalmente */
+  align-items: center; /* Centrar el contenido verticalmente */
+  width: 100%;
+  font-weight: bold;
+  position: fixed; /* Fijar el footer en la parte inferior */
+  bottom: 0;
+  background-color: #f8f9fa; /* Color de fondo del footer */
+  padding: 10px 0; /* Espaciado interno del footer */
+  text-align: center; /* Asegurar que el texto esté centrado */
+  height: 5vh;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+  .form, .user-panel {
+    width: 70%;
+  }
+
+  .right, .left {
+    width: 100%;
+  }
+
+  .input-group {
+    width: 25%;
+  }
+}
+
+@media (max-width: 992px) {
+  .navbar {
+    margin-bottom: 70px;
+  }
+
+  .form, .user-panel {
+    width: 80%;
+  }
+
+  .right, .left {
+    width: 100%;
+  }
+
+  .input-group {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    margin-bottom: 70px;
+  }
+
+  .container {
+    flex-direction: column-reverse;
+  }
+
+  .form, .user-panel {
+    width: 100%;
+  }
+
+  .input-group {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) and (max-height: 768px) {
+  .navbar {
+    margin-bottom: 20px; /* Ajusta el margen inferior del navbar */
+  }
+
+  .container {
+    margin-top: 100px; /* Ajusta el margen superior del container */
+  }
+
+  .items-table-container {
+    max-height: calc(6 * 30px); /* Altura máxima para 6 items, ajusta 48px según la altura de cada fila */
+    overflow-y: auto; /* Habilitar scroll vertical */
+    margin-top: 16px;
+    display: block;
+  }
+
+  .table td{
+    gap: 20px;
+  }
+
+  .total-row td {
+    gap: 15px;
+  }
+
+  .table th{
+  width: 40%;
+  }
+}
+
+@media (max-width: 1440px) and (max-height: 768px) {
+  .navbar {
+    margin-bottom: 20px; /* Ajusta el margen inferior del navbar */
+  }
+
+  .container {
+    margin-top: 100px; /* Ajusta el margen superior del container */
+  }
+
+  .items-table-container {
+    max-height: calc(6 * 40px); /* Altura máxima para 6 items, ajusta 48px según la altura de cada fila */
+    overflow-y: auto; /* Habilitar scroll vertical */
+    margin-top: 16px;
+    display: block;
+  }
+}
+
+@media (max-width: 2560px) and (max-height: 768px) {
+  .navbar {
+    margin-bottom: 20px; /* Ajusta el margen inferior del navbar */
+  }
+
+  .container {
+    margin-top: 100px; /* Ajusta el margen superior del container */
+  }
+
+  .items-table-container {
+    max-height: calc(6 * 40px); /* Altura máxima para 6 items, ajusta 48px según la altura de cada fila */
+    overflow-y: auto; /* Habilitar scroll vertical */
+    margin-top: 16px;
+    display: block;
+  }
+}
+
+@media (max-width: 768px) and (max-height: 768px) {
+  .navbar {
+    margin-bottom: 20px; /* Ajusta el margen inferior del navbar */
+  }
+
+  .container {
+    margin-top: 100px; /* Ajusta el margen superior del container */
+  }
+
+  .items-table-container {
+    max-height: calc(6 * 40px); /* Altura máxima para 6 items, ajusta 48px según la altura de cada fila */
+    overflow-y: auto; /* Habilitar scroll vertical */
+    margin-top: 16px;
+    display: block;
+  }
+}
+
+@media (max-width: 576px) {
+  .form, .user-panel {
+    width: 100%;
+    padding: 0 10px; /* Añadir padding para evitar que el contenido toque los bordes */
+  }
+
+  .input-group {
+    width: 100%;
+  }
+
+  .right, .left {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .form, .user-panel {
+    width: 100%;
+    padding: 0 5px; /* Reducir padding para pantallas muy pequeñas */
+  }
+
+  .input-group {
+    width: 100%;
+  }
+
+  .right, .left {
+    width: 100%;
+  }
+}
